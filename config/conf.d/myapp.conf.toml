@@ -1,0 +1,12 @@
+[template]
+prefix = "/servers/myapp"
+src = "myapp.conf.tmpl"
+dest = "/etc/nginx/conf.d/myapp.conf"
+owner = "nginx"
+mode = "0644"
+keys = [
+  "/subdomain",
+  "/upstream",
+]
+check_cmd = "/usr/sbin/nginx -t -c /etc/nginx/nginx.conf"
+reload_cmd = "/usr/sbin/nginx -s reload"

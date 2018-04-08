@@ -2,7 +2,10 @@ nginx-confd:
   build: .
   volumes:
     - ./website:/var/www/localhost/htdocs
+    - ${PWD}/nginx:/etc/nginx
   environment:
     - SERVER_NAME=sample.com
   ports:
     - "3000:80"
+    - "3001:8082"
+    - "3443:443"

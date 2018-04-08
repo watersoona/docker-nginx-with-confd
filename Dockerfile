@@ -1,7 +1,7 @@
 FROM alpine:latest
-MAINTAINER Alexey Baikov <sysboss[@]mail.ru>
+LABEL MAINTAINER="layker <waterzds@gmail.com>"
 
-ENV CONFD_VERSION="0.11.0" \
+ENV CONFD_VERSION="0.15.0" \
     CONFD_URL="https://github.com/kelseyhightower/confd/releases/download"
 
 RUN apk --no-cache --update add ca-certificates openssl \
@@ -11,7 +11,8 @@ RUN apk --no-cache --update add ca-certificates openssl \
 
 RUN apk add --no-cache nginx \
  && mkdir -p /run/nginx \
- && rm -rf /var/cache/apk/*
+ && rm -rf /var/cache/apk/* \
+ && rm -rf /etc/nginx/*
 
 ADD config /etc/confd
 COPY run.sh /run.sh
